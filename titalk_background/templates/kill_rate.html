@@ -1,0 +1,706 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- Begin Page Content -->
+
+<div class="container-fluid">
+
+    <!--  選擇殺率彩種  -->
+    <div class="row">
+        <div class="card shadow mb-4" style="width:88%">
+                <div class="card-header py-3">
+                    <h3 class="m-0 font-weight-bold text-primary">選擇殺率彩種</h3>
+                </div>
+
+                <div class="card-body">
+                <!-- DataTales Example -->
+                    <form class="form-check" name="form2" id="defineContainer">
+                        <div class="card shadow mb-4">
+
+                            <div class="card-header py-3">
+                                <input id="item" type="checkbox" onClick="toggle(this)" style="margin:2px"> 全選
+                            </div>
+                            <div class="card-header py-3">
+                                {{ lottery_code_checkbox_list_1 | safe }}
+
+                            </div>
+                            <div class="card-header py-3">
+                                {{ lottery_code_checkbox_list_2 | safe }}
+                                </div>
+                            <div class="card-header py-3">
+                                        <input style="margin-right:100px" class="btn btn-primary btn-icon-split btn-lg" id="itemButton" type="button" value="確認" onClick="checkboxes_submit()" />
+                            </div>
+
+                        </div>
+                    </form>
+
+        </div>
+            </div>
+        </div>
+
+    <div class="row">
+
+        <!-- Basic Card Example 1 -->
+        <div class="card shadow mb-4" style="width:22%">
+            <div class="card-header py-3">
+                <h3 class="m-0 font-weight-bold text-primary">Pro 投注 - 殺率</h3>
+            </div>
+                <div class="card-body">
+                <!-- DataTales Example -->
+                <div class="card shadow mb-5">
+                    <div class="card-header py-3">
+
+                        <form class="btn btn-primary btn-icon-split btn-lg">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-flag"></i>
+                            </span>
+                            <input type="button" class="btn btn-primary btn-icon-split btn-lg"
+                                   style="margin-left:10px; margin-right:10px;" data-toggle="modal"
+                                   data-target="#kill_rate_pro_open" value="開啟" onclick="kill_rate('pro', 'open')">
+
+                        </form>
+                        <!-- Button trigger modal -->
+                        <div class="modal fade" id="kill_rate_pro_open" tabindex="-1" role="dialog" aria-labelledby="kill_rate_pro_open_result" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="kill_rate_pro_open_result">結果</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                Pro 假盈率排程啟動
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <br><br>
+                        <form class="btn btn-primary btn-icon-split btn-lg">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-flag"></i>
+                                </span>
+                            <input type="button" class="btn btn-primary btn-icon-split btn-lg"
+                                   style="margin-left:10px; margin-right:10px;" data-toggle="modal"
+                                   data-target="#kill_rate_pro_close" value="關閉" onclick="kill_rate('pro', 'close')">
+                        </form>
+
+                        <div class="modal fade" id="kill_rate_pro_close" tabindex="-1" role="dialog" aria-labelledby="kill_rate_pro_close_result" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="kill_rate_pro_close_result">結果</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                Pro 假盈率排程關閉
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <br><br>
+                        <div class="btn-info btn-icon-split btn-lg">
+                            <span class="icon text-white-50">
+
+                            </span>
+                            <span id="kill_rate_pro_status" class="text">{{ kill_rate_pro_status }}</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Basic Card Example 2 -->
+        <div class="card shadow mb-4" style="width:22%">
+            <div class="card-header py-3">
+                <h3 class="m-0 font-weight-bold text-primary">Pre 投注 - 殺率</h3>
+            </div>
+                <div class="card-body">
+                <!-- DataTales Example -->
+                <div class="card shadow mb-5">
+                    <div class="card-header py-3">
+
+                        <form class="btn btn-primary btn-icon-split btn-lg">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-flag"></i>
+                            </span>
+                            <input type="button" class="btn btn-primary btn-icon-split btn-lg"
+                                   style="margin-left:10px; margin-right:10px;" data-toggle="modal"
+                                   data-target="#kill_rate_pre_open" value="開啟" onclick="kill_rate('pre', 'open')">
+
+                        </form>
+                        <!-- Button trigger modal -->
+                        <div class="modal fade" id="kill_rate_pre_open" tabindex="-1" role="dialog" aria-labelledby="kill_rate_pre_open_result" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="kill_rate_pre_open_result">結果</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                Pre 假盈率排程啟動
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <br><br>
+                        <form class="btn btn-primary btn-icon-split btn-lg">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-flag"></i>
+                                </span>
+                            <input type="button" class="btn btn-primary btn-icon-split btn-lg"
+                                   style="margin-left:10px; margin-right:10px;" data-toggle="modal"
+                                   data-target="#kill_rate_pre_close" value="關閉" onclick="kill_rate('pre', 'close')">
+                        </form>
+
+                        <div class="modal fade" id="kill_rate_pre_close" tabindex="-1" role="dialog" aria-labelledby="kill_rate_pre_close_result" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="kill_rate_pre_close_result">結果</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                Pro 假盈率排程關閉
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <br><br>
+                        <div class="btn-info btn-icon-split btn-lg">
+                            <span class="icon text-white-50">
+
+                            </span>
+                            <span id="kill_rate_pre_status" class="text">{{ kill_rate_pre_status }}</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Basic Card Example 3 -->
+        <div class="card shadow mb-4" style="width:22%">
+            <div class="card-header py-3">
+                <h3 class="m-0 font-weight-bold text-primary">Test 投注 - 殺率</h3>
+            </div>
+                <div class="card-body">
+                <!-- DataTales Example -->
+                <div class="card shadow mb-5">
+                    <div class="card-header py-3">
+
+                        <form class="btn btn-primary btn-icon-split btn-lg">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-flag"></i>
+                            </span>
+                            <input type="button" class="btn btn-primary btn-icon-split btn-lg"
+                                   style="margin-left:10px; margin-right:10px;" data-toggle="modal"
+                                   data-target="#kill_rate_test_open" value="開啟" onclick="kill_rate('test', 'open')">
+
+                        </form>
+                        <!-- Button trigger modal -->
+                        <div class="modal fade" id="kill_rate_test_open" tabindex="-1" role="dialog" aria-labelledby="kill_rate_test_open_result" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="kill_rate_test_open_result">結果</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                Test 假盈率排程啟動
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <br><br>
+                        <form class="btn btn-primary btn-icon-split btn-lg">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-flag"></i>
+                                </span>
+                            <input type="button" class="btn btn-primary btn-icon-split btn-lg"
+                                   style="margin-left:10px; margin-right:10px;" data-toggle="modal"
+                                   data-target="#kill_rate_test_close" value="關閉" onclick="kill_rate('test', 'close')">
+                        </form>
+
+                        <div class="modal fade" id="kill_rate_test_close" tabindex="-1" role="dialog" aria-labelledby="kill_rate_test_close_result" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="kill_rate_test_close_result">結果</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                Test 假盈率排程關閉
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <br><br>
+                        <div class="btn-info btn-icon-split btn-lg">
+                            <span class="icon text-white-50">
+
+                            </span>
+                            <span id="kill_rate_test_status" class="text">{{ kill_rate_test_status }}</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Basic Card Example 4 -->
+        <div class="card shadow mb-4" style="width:22%">
+            <div class="card-header py-3">
+                <h3 class="m-0 font-weight-bold text-primary">Test2 投注 - 殺率</h3>
+            </div>
+                <div class="card-body">
+                <!-- DataTales Example -->
+                <div class="card shadow mb-5">
+                    <div class="card-header py-3">
+
+                        <form class="btn btn-primary btn-icon-split btn-lg">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-flag"></i>
+                            </span>
+                            <input type="button" class="btn btn-primary btn-icon-split btn-lg"
+                                   style="margin-left:10px; margin-right:10px;" data-toggle="modal"
+                                   data-target="#kill_rate_test2_open" value="開啟" onclick="kill_rate('test2', 'open')">
+
+                        </form>
+                        <!-- Button trigger modal -->
+                        <div class="modal fade" id="kill_rate_test2_open" tabindex="-1" role="dialog" aria-labelledby="kill_rate_test2_open_result" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="kill_rate_test2_open_result">結果</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                Test2 假盈率排程啟動
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <br><br>
+                        <form class="btn btn-primary btn-icon-split btn-lg">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-flag"></i>
+                                </span>
+                            <input type="button" class="btn btn-primary btn-icon-split btn-lg"
+                                   style="margin-left:10px; margin-right:10px;" data-toggle="modal"
+                                   data-target="#kill_rate_test2_close" value="關閉" onclick="kill_rate('test2', 'close')">
+                        </form>
+
+                        <div class="modal fade" id="kill_rate_test2_close" tabindex="-1" role="dialog" aria-labelledby="kill_rate_test2_close_result" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="kill_rate_test2_close_result">結果</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                Test2 假盈率排程關閉
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <br><br>
+                        <div class="btn-info btn-icon-split btn-lg">
+                            <span class="icon text-white-50">
+
+                            </span>
+                            <span id="kill_rate_test2_status" class="text">{{ kill_rate_test2_status }}</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+    <div class="row">
+
+        <!-- Basic Card Example 1 -->
+        <div class="card shadow mb-4" style="width:22%">
+            <div class="card-header py-3">
+                <h3 class="m-0 font-weight-bold text-primary">Pro - 排程檢查器</h3>
+            </div>
+                <div class="card-body">
+                <!-- DataTales Example -->
+                <div class="card shadow mb-5">
+                    <div class="card-header py-3">
+
+                        <form class="btn btn-primary btn-icon-split btn-lg">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-flag"></i>
+                            </span>
+                            <input type="button" class="btn btn-primary btn-icon-split btn-lg"
+                                   style="margin-left:10px; margin-right:10px;" data-toggle="modal"
+                                   data-target="#kill_rate_pro_schedule_check_open" value="開啟" onclick="kill_rate('kill_rate_pro_schedule', 'open')">
+
+                        </form>
+                        <!-- Button trigger modal -->
+                        <div class="modal fade" id="kill_rate_pro_schedule_check_open" tabindex="-1" role="dialog" aria-labelledby="kill_rate_pro_schedule_check_open_result" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="kill_rate_pro_schedule_check_open_result">結果</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                Pro - 排程檢查器啟動
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <br><br>
+                        <form class="btn btn-primary btn-icon-split btn-lg">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-flag"></i>
+                                </span>
+                            <input type="button" class="btn btn-primary btn-icon-split btn-lg"
+                                   style="margin-left:10px; margin-right:10px;" data-toggle="modal"
+                                   data-target="#kill_rate_pro_schedule_check_close" value="關閉" onclick="kill_rate('kill_rate_pro_schedule', 'close')">
+                        </form>
+
+                        <div class="modal fade" id="kill_rate_pro_schedule_check_close" tabindex="-1" role="dialog" aria-labelledby="kill_rate_pro_schedule_check_close_result" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="kill_rate_pro_schedule_check_close_result">結果</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                Pro - 排程檢查器關閉
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <br><br>
+                        <div class="btn-info btn-icon-split btn-lg">
+                            <span class="icon text-white-50">
+
+                            </span>
+                            <span id="kill_rate_schedule_pro_status" class="text">{{ kill_rate_schedule_pro_status }}</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Basic Card Example 2 -->
+        <div class="card shadow mb-4" style="width:22%">
+            <div class="card-header py-3">
+                <h3 class="m-0 font-weight-bold text-primary">Pre - 排程檢查器</h3>
+            </div>
+                <div class="card-body">
+                <!-- DataTales Example -->
+                <div class="card shadow mb-5">
+                    <div class="card-header py-3">
+
+                        <form class="btn btn-primary btn-icon-split btn-lg">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-flag"></i>
+                            </span>
+                            <input type="button" class="btn btn-primary btn-icon-split btn-lg"
+                                   style="margin-left:10px; margin-right:10px;" data-toggle="modal"
+                                   data-target="#kill_rate_pre_schedule_check_open" value="開啟" onclick="kill_rate('kill_rate_pre_schedule', 'open')">
+
+                        </form>
+                        <!-- Button trigger modal -->
+                        <div class="modal fade" id="kill_rate_pre_schedule_check_open" tabindex="-1" role="dialog" aria-labelledby="kill_rate_pre_schedule_check_open_result" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="kill_rate_pre_schedule_check_open_result">結果</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                Pre - 排程檢查器啟動
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <br><br>
+                        <form class="btn btn-primary btn-icon-split btn-lg">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-flag"></i>
+                                </span>
+                            <input type="button" class="btn btn-primary btn-icon-split btn-lg"
+                                   style="margin-left:10px; margin-right:10px;" data-toggle="modal"
+                                   data-target="#kill_rate_pre_schedule_check_close" value="關閉" onclick="kill_rate('kill_rate_pre_schedule', 'close')">
+                        </form>
+
+                        <div class="modal fade" id="kill_rate_pre_schedule_check_close" tabindex="-1" role="dialog" aria-labelledby="kill_rate_pre_schedule_check_close_result" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="kill_rate_pre_schedule_check_close_result">結果</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                Pro - 排程檢查器關閉
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <br><br>
+                        <div class="btn-info btn-icon-split btn-lg">
+                            <span class="icon text-white-50">
+
+                            </span>
+                            <span id="kill_rate_schedule_pre_status" class="text">{{ kill_rate_schedule_pre_status }}</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Basic Card Example 3 -->
+        <div class="card shadow mb-4" style="width:22%">
+            <div class="card-header py-3">
+                <h3 class="m-0 font-weight-bold text-primary">Test - 排程檢查器</h3>
+            </div>
+                <div class="card-body">
+                <!-- DataTales Example -->
+                <div class="card shadow mb-5">
+                    <div class="card-header py-3">
+
+                        <form class="btn btn-primary btn-icon-split btn-lg">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-flag"></i>
+                            </span>
+                            <input type="button" class="btn btn-primary btn-icon-split btn-lg"
+                                   style="margin-left:10px; margin-right:10px;" data-toggle="modal"
+                                   data-target="#kill_rate_test_schedule_check_open" value="開啟" onclick="kill_rate('kill_rate_test_schedule', 'open')">
+
+                        </form>
+                        <!-- Button trigger modal -->
+                        <div class="modal fade" id="kill_rate_test_schedule_check_open" tabindex="-1" role="dialog" aria-labelledby="kill_rate_test_schedule_check_open_result" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="kill_rate_test_schedule_check_open_result">結果</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                Test - 排程檢查器啟動
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <br><br>
+                        <form class="btn btn-primary btn-icon-split btn-lg">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-flag"></i>
+                                </span>
+                            <input type="button" class="btn btn-primary btn-icon-split btn-lg"
+                                   style="margin-left:10px; margin-right:10px;" data-toggle="modal"
+                                   data-target="#kill_rate_test_schedule_check_close" value="關閉" onclick="kill_rate('kill_rate_test_schedule', 'close')">
+                        </form>
+
+                        <div class="modal fade" id="kill_rate_test_schedule_check_close" tabindex="-1" role="dialog" aria-labelledby="kill_rate_test_schedule_check_close_result" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="kill_rate_test_schedule_check_close_result">結果</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                Pro - 排程檢查器關閉
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <br><br>
+                        <div class="btn-info btn-icon-split btn-lg">
+                            <span class="icon text-white-50">
+
+                            </span>
+                            <span id="kill_rate_schedule_test_status" class="text">{{ kill_rate_schedule_test_status }}</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Basic Card Example 4 -->
+        <div class="card shadow mb-4" style="width:22%">
+            <div class="card-header py-3">
+                <h3 class="m-0 font-weight-bold text-primary">Test2 - 排程檢查器</h3>
+            </div>
+                <div class="card-body">
+                <!-- DataTales Example -->
+                <div class="card shadow mb-5">
+                    <div class="card-header py-3">
+
+                        <form class="btn btn-primary btn-icon-split btn-lg">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-flag"></i>
+                            </span>
+                            <input type="button" class="btn btn-primary btn-icon-split btn-lg"
+                                   style="margin-left:10px; margin-right:10px;" data-toggle="modal"
+                                   data-target="#kill_rate_test2_schedule_check_open" value="開啟" onclick="kill_rate('kill_rate_test2_schedule', 'open')">
+
+                        </form>
+                        <!-- Button trigger modal -->
+                        <div class="modal fade" id="kill_rate_test2_schedule_check_open" tabindex="-1" role="dialog" aria-labelledby="kill_rate_test2_schedule_check_open_result" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="kill_rate_test2_schedule_check_open_result">結果</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                Test2 - 排程檢查器啟動
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <br><br>
+                        <form class="btn btn-primary btn-icon-split btn-lg">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-flag"></i>
+                                </span>
+                            <input type="button" class="btn btn-primary btn-icon-split btn-lg"
+                                   style="margin-left:10px; margin-right:10px;" data-toggle="modal"
+                                   data-target="#kill_rate_test2_schedule_check_close" value="關閉" onclick="kill_rate('kill_rate_test2_schedule', 'close')">
+                        </form>
+
+                        <div class="modal fade" id="kill_rate_test2_schedule_check_close" tabindex="-1" role="dialog" aria-labelledby="kill_rate_test2_schedule_check_close_result" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="kill_rate_test2_schedule_check_close_result">結果</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                Test2 - 排程檢查器關閉
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <br><br>
+                        <div class="btn-info btn-icon-split btn-lg">
+                            <span class="icon text-white-50">
+
+                            </span>
+                            <span id="kill_rate_schedule_test2_status" class="text">{{ kill_rate_schedule_test2_status }}</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+{% endblock %}

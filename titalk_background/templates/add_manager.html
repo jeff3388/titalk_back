@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+<!-- Basic Card Example -->
+    <div class="card shadow mb-4" style="width:40%">
+        <div class="card-header py-3">
+            <h3 class="m-0 font-weight-bold text-primary">創建使用者</h3>
+        </div>
+        <div class="card-body">
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+
+                    <!--  表單內容-->
+                    <form action="{{ url_for('add_manager') }}" method="post">
+                          <div class="mb-3">
+                            <label class="form-label">使用者帳號</label>
+                            <input type="text" name="add_username" class="form-control" id="add_username">
+
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-label">使用者密碼</label>
+                            <input type="text" name="add_password" class="form-control" id="add_password">
+                          </div>
+                          <button type="submit" class="btn btn-primary">確認</button>
+                    </form>
+
+                    <br>
+                    {{ result | safe }}
+
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock %}

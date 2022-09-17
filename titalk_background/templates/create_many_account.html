@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+    <!-- Basic Card Example -->
+    <div class="card shadow mb-4" style="width:40%">
+        <div class="card-header py-3">
+            <h3 class="m-0 font-weight-bold text-primary">批量創建前台使用者帳號</h3>
+        </div>
+        <div class="card-body">
+            <!-- DataTales Example -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+
+                    <form action="{{ url_for('create_many_account') }}" method="post">
+                        <div class="mb-3">
+                            <label class="form-label">後台登入帳號</label>
+                            <input name="" type="text" class="form-control" id="background_account" placeholder="ex: username">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">後台登入密碼</label>
+                            <input name="" type="text" class="form-control" id="background_password" placeholder="ex: password">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">後台域名</label>
+                            <select name="" class="form-control" id="exampleFormControlSelect1">
+                                  <option>http://pt.internation-test.com</option>
+                                  <option>http://pt.internation-pre.com</option>
+                                </select>
+<!--                            <input type="text" class="form-control" id="website" placeholder="ex: http://pt.internation-test.com">-->
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">站點</label>
+                            <input name="" type="text" class="form-control" id="site" placeholder="ex: jojoSite">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">帳號</label>
+                            <input name="" type="text" class="form-control" id="create_account" placeholder="ex: jojo">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">帳號索引</label>
+                            <input name="" type="text" class="form-control" id="create_account_index" placeholder="ex: 0-99">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="margin-top:10px">確認</button>
+                    </form>
+
+                    <br>
+
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- Begin Page Content -->
+
+<div class="container-fluid">
+
+    <div class="row">
+
+        <!-- Basic Card Example 1 -->
+        <div class="card shadow mb-4" style="width:30%">
+        <div class="card-header py-3">
+            <h3 class="m-0 font-weight-bold text-primary">遊戲壓測 sync</h3>
+        </div>
+        <div class="card-body">
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+
+                    <!--  表單內容-->
+                    <form action="{{ url_for('sync_game') }}" method="post">
+                          <div class="mb-3">
+                            <label class="form-label">壓測人數</label>
+                            <input type="text" name="add_username" class="form-control" id="stress_1">
+
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-label">遊戲代號</label>
+                            <input type="text" name="add_password" class="form-control" id="game_code_1">
+                          </div>
+                          <button type="submit" class="btn btn-primary">確認</button>
+                    </form>
+
+                    <br>
+                    {{ result | safe }}
+
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+        <!-- Basic Card Example 2 -->
+        <div class="card shadow mb-4" style="width:30%">
+        <div class="card-header py-3">
+            <h3 class="m-0 font-weight-bold text-primary">遊戲壓測 async</h3>
+        </div>
+        <div class="card-body">
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+
+                    <!--  表單內容-->
+                    <form action="{{ url_for('async_game') }}" method="post">
+                          <div class="mb-3">
+                            <label class="form-label">壓測人數</label>
+                            <input type="text" name="add_username" class="form-control" id="stress_2">
+
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-label">遊戲代號</label>
+                            <input type="text" name="add_password" class="form-control" id="game_code_2">
+                          </div>
+                          <button type="submit" class="btn btn-primary">確認</button>
+                    </form>
+
+                    <br>
+                    {{ result | safe }}
+
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+        <!-- Basic Card Example 3 -->
+        <div class="card shadow mb-4" style="width:30%">
+        <div class="card-header py-3">
+            <h3 class="m-0 font-weight-bold text-primary">關閉遊戲連線</h3>
+        </div>
+        <div class="card-body">
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+
+                    <!--  表單內容-->
+                    <form action="{{ url_for('close_game') }}" method="post">
+                          <div class="mb-3">
+                            <label class="form-label">遊戲所屬域名</label>
+                            <input type="text" name="add_username" class="form-control" id="game_domain">
+
+                          </div>
+                          <div class="mb-3">
+                            <label class="form-label">關閉連線數量</label>
+                            <input type="text" name="add_password" class="form-control" id="close_game">
+                          </div>
+                          <button type="submit" class="btn btn-primary">確認</button>
+                    </form>
+
+                    <br>
+                    {{ result | safe }}
+
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+    </div>
+
+</div>
+
+{% endblock %}

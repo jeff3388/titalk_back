@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+<!-- Basic Card Example -->
+    <div class="card shadow mb-4" style="width:40%">
+        <div class="card-header py-3">
+            <h3 class="m-0 font-weight-bold text-primary">提交文章系統</h3>
+        </div>
+        <div class="card-body">
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+
+                    <!--  表單內容-->
+                    <form action="{{ url_for('article_submit') }}" method="post">
+                        <div class="mb-3">
+
+                            <label class="form-label">表單選擇</label>
+                            <br/>
+
+                            <select  name="table_name" id="table_name">
+                                {{ option_value | safe }}
+                            </select>
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label class="form-label">文章標題</label>
+                            <input type="text" class="form-control" name="add_title" id="add_title">
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="add_content">文章內容</label>
+                            <textarea class="form-control" name="add_content" id="add_content" rows="8"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">確認</button>
+
+                    </form>
+                <br>
+                <br>
+                {{ result | safe }}
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock %}

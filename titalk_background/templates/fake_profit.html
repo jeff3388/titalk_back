@@ -1,0 +1,655 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- Begin Page Content -->
+
+<div class="container-fluid">
+
+    <div class="row">
+
+        <!-- Basic Card Example 1 -->
+        <div class="card shadow mb-4" style="width:22%">
+            <div class="card-header py-3">
+                <h3 class="m-0 font-weight-bold text-primary">Pro 投注 - 假盈率</h3>
+            </div>
+                <div class="card-body">
+                <!-- DataTales Example -->
+                <div class="card shadow mb-5">
+                    <div class="card-header py-3">
+
+                        <form class="btn btn-primary btn-icon-split btn-lg">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-flag"></i>
+                            </span>
+                            <input type="button" class="btn btn-primary btn-icon-split btn-lg"
+                                   style="margin-left:10px; margin-right:10px;" data-toggle="modal"
+                                   data-target="#target1" value="開啟" onclick="fake_profit('pro', 'open')">
+
+                        </form>
+                        <!-- Button trigger modal -->
+                        <div class="modal fade" id="target1" tabindex="-1" role="dialog" aria-labelledby="Title1" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="Title1">結果</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                Pro 假盈率排程啟動
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <br><br>
+                        <form class="btn btn-primary btn-icon-split btn-lg">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-flag"></i>
+                                </span>
+                            <input type="hidden" name="env" value="pro">
+                            <input type="hidden" name="status" value="close">
+                            <input type="button" class="btn btn-primary btn-icon-split btn-lg"
+                                   style="margin-left:10px; margin-right:10px;" data-toggle="modal"
+                                   data-target="#target2" value="關閉" onclick="fake_profit('pro', 'close')">
+                        </form>
+
+                        <div class="modal fade" id="target2" tabindex="-1" role="dialog" aria-labelledby="Title2" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="Title2">結果</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                Pro 假盈率排程關閉
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <br><br>
+                        <div class="btn-info btn-icon-split btn-lg">
+                            <span class="icon text-white-50">
+
+                            </span>
+                            <span id="fake_profit_pro_status" class="text">{{ fake_profit_pro_status }}</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Basic Card Example 2 -->
+        <div class="card shadow mb-4" style="width:22%;">
+            <div class="card-header py-3">
+                <h3 class="m-0 font-weight-bold text-primary">Pre 投注 - 假盈率</h3>
+            </div>
+            <div class="card-body">
+                <!-- DataTales Example -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+
+                        <form class="btn btn-primary btn-icon-split btn-lg">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-flag"></i>
+                            </span>
+                            <input type="hidden" name="env" value="pre">
+                            <input type="hidden" name="status" value="open">
+                            <input type="button" class="btn btn-primary btn-icon-split btn-lg"
+                                   style="margin-left:10px; margin-right:10px;" data-toggle="modal"
+                                   data-target="#target4" value="開啟" onclick="fake_profit('pre', 'open')"/>
+                        </form>
+                        <div class="modal fade" id="target4" tabindex="-1" role="dialog" aria-labelledby="Title4" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="Title4">結果</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                Pre 假盈率排程開啟
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <br><br>
+                        <form class="btn btn-primary btn-icon-split btn-lg">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-flag"></i>
+                                </span>
+                            <input type="hidden" name="env" value="pre">
+                            <input type="hidden" name="status" value="close">
+                            <input type="button" class="btn btn-primary btn-icon-split btn-lg"
+                                   style="margin-left:10px; margin-right:10px;" data-toggle="modal"
+                                   data-target="#target5" value="關閉" onclick="fake_profit('pre', 'close')"/>
+                        </form>
+                        <div class="modal fade" id="target5" tabindex="-1" role="dialog" aria-labelledby="Title5" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="Title5">結果</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                Pro 假盈率排程關閉
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <br><br>
+                        <div class="btn-info btn-icon-split btn-lg">
+                            <span class="icon text-white-50">
+                            </span>
+                            <span id="fake_profit_pre_status" class="text">{{ fake_profit_pre_status }}</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Basic Card Example 3 -->
+        <div class="card shadow mb-4" style="width:22%;">
+            <div class="card-header py-3">
+                <h3 class="m-0 font-weight-bold text-primary">Test 投注 - 假盈率</h3>
+            </div>
+            <div class="card-body">
+                <!-- DataTales Example -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+
+                        <form class="btn btn-primary btn-icon-split btn-lg">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-flag"></i>
+                            </span>
+                            <input  type="button" class="btn btn-primary btn-icon-split btn-lg"
+                                   style="margin-left:10px; margin-right:10px;" data-toggle="modal"
+                                   data-target="#target22" value="開啟" onclick="fake_profit('test', 'open')"/>
+                        </form>
+                        <div class="modal fade" id="target22" tabindex="-1" role="dialog" aria-labelledby="Title7" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="Title7">結果</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                  Test 假盈率排程開啟
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <br><br>
+                        <form class="btn btn-primary btn-icon-split btn-lg">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-flag"></i>
+                                </span>
+                            <input type="button" class="btn btn-primary btn-icon-split btn-lg"
+                                   style="margin-left:10px; margin-right:10px;" data-toggle="modal"
+                                   data-target="#target9" value="關閉" onclick="fake_profit('test', 'close')"/>
+                        </form>
+                        <div class="modal fade" id="target11" tabindex="-1" role="dialog" aria-labelledby="Title9" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="Title9">結果</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                  Test2 假盈率排程關閉
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <br><br>
+                        <div class="btn-info btn-icon-split btn-lg">
+                            <span class="icon text-white-50">
+                            </span>
+                            <span id="fake_profit_test_status" class="text">{{ fake_profit_test_status }}</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Basic Card Example 4 -->
+        <div class="card shadow mb-4" style="width:22%;">
+            <div class="card-header py-3">
+                <h3 class="m-0 font-weight-bold text-primary">Test2 投注 - 假盈率</h3>
+            </div>
+            <div class="card-body">
+                <!-- DataTales Example -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+
+                        <form class="btn btn-primary btn-icon-split btn-lg">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-flag"></i>
+                            </span>
+                            <input  type="button" class="btn btn-primary btn-icon-split btn-lg"
+                                   style="margin-left:10px; margin-right:10px;" data-toggle="modal"
+                                   data-target="#target7" value="開啟" onclick="fake_profit('test2', 'open')"/>
+                        </form>
+                        <div class="modal fade" id="target7" tabindex="-1" role="dialog" aria-labelledby="Title55" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="Title55">結果</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                  Test2 假盈率排程開啟
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <br><br>
+                        <form class="btn btn-primary btn-icon-split btn-lg">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-flag"></i>
+                                </span>
+                            <input type="hidden" name="env" value="test2">
+                            <input type="hidden" name="status" value="close">
+                            <input type="button" class="btn btn-primary btn-icon-split btn-lg"
+                                   style="margin-left:10px; margin-right:10px;" data-toggle="modal"
+                                   data-target="#target9" value="關閉" onclick="fake_profit('test2', 'close')"/>
+                        </form>
+                        <div class="modal fade" id="target9" tabindex="-1" role="dialog" aria-labelledby="Title10" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="Title10">結果</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                  Test2 假盈率排程關閉
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <br><br>
+                        <div class="btn-info btn-icon-split btn-lg">
+                            <span class="icon text-white-50">
+                            </span>
+                            <span id="fake_profit_test2_status" class="text">{{ fake_profit_test2_status }}</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <!-- Basic Card Example 1 -->
+        <div class="card shadow mb-4" style="width:22%;">
+            <div class="card-header py-3">
+                <h3 class="m-0 font-weight-bold text-primary">Pro - 排程檢查器</h3>
+            </div>
+            <div class="card-body">
+                <!-- DataTales Example -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+
+                        <form class="btn btn-primary btn-icon-split btn-lg">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-flag"></i>
+                            </span>
+                            <input  type="button" class="btn btn-primary btn-icon-split btn-lg"
+                                   style="margin-left:10px; margin-right:10px;" data-toggle="modal"
+                                   data-target="#fake_profit_pro_schedule_check_open" value="開啟" onclick="fake_profit('fake_profit_pro_schedule', 'open')"/>
+                        </form>
+                        <div class="modal fade" id="fake_profit_pro_schedule_check_open" tabindex="-1" role="dialog" aria-labelledby="fake_profit_pro_schedule_open" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="fake_profit_pro_schedule_open">結果</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                  Pro 排程檢查器開啟
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+
+                        <br><br>
+                        <form class="btn btn-primary btn-icon-split btn-lg">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-flag"></i>
+                                </span>
+
+                            <input type="button" class="btn btn-primary btn-icon-split btn-lg"
+                                   style="margin-left:10px; margin-right:10px;" data-toggle="modal"
+                                   data-target="#fake_profit_pro_schedule_check_close" value="關閉" onclick="fake_profit('fake_profit_pro_schedule', 'close')"/>
+                        </form>
+                        <div class="modal fade" id="fake_profit_pro_schedule_check_close" tabindex="-1" role="dialog" aria-labelledby="fake_profit_pro_schedule_close" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="fake_profit_pro_schedule_close">結果</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                  Pro - 排程檢查器關閉
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <br><br>
+                        <div class="btn-info btn-icon-split btn-lg">
+                            <span class="icon text-white-50">
+                            </span>
+                            <span id="fake_profit_schedule_pro_status" class="text">{{ fake_profit_schedule_pro_status }}</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Basic Card Example 2 -->
+        <div class="card shadow mb-4" style="width:22%;">
+            <div class="card-header py-3">
+                <h3 class="m-0 font-weight-bold text-primary">Pre - 排程檢查器</h3>
+            </div>
+            <div class="card-body">
+                <!-- DataTales Example -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+
+                        <form class="btn btn-primary btn-icon-split btn-lg">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-flag"></i>
+                            </span>
+                            <input  type="button" class="btn btn-primary btn-icon-split btn-lg"
+                                   style="margin-left:10px; margin-right:10px;" data-toggle="modal"
+                                   data-target="#fake_profit_pro_schedule_check_open" value="開啟" onclick="fake_profit('fake_profit_pre_schedule', 'open')"/>
+                        </form>
+                        <div class="modal fade" id="fake_profit_pre_schedule_check_open" tabindex="-1" role="dialog" aria-labelledby="fake_profit_pre_schedule_open" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="fake_profit_pre_schedule_open">結果</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                  Pro 排程檢查器開啟
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+
+                        <br><br>
+                        <form class="btn btn-primary btn-icon-split btn-lg">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-flag"></i>
+                                </span>
+
+                            <input type="button" class="btn btn-primary btn-icon-split btn-lg"
+                                   style="margin-left:10px; margin-right:10px;" data-toggle="modal"
+                                   data-target="#fake_profit_pro_schedule_check_close" value="關閉" onclick="fake_profit('fake_profit_pre_schedule', 'close')"/>
+                        </form>
+                        <div class="modal fade" id="fake_profit_pre_schedule_check_close" tabindex="-1" role="dialog" aria-labelledby="fake_profit_pre_schedule_close" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="fake_profit_pre_schedule_close">結果</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                  Pre - 排程檢查器關閉
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <br><br>
+                        <div class="btn-info btn-icon-split btn-lg">
+                            <span class="icon text-white-50">
+                            </span>
+                            <span id="fake_profit_schedule_pre_status" class="text">{{ fake_profit_schedule_pre_status }}</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Basic Card Example 3 -->
+        <div class="card shadow mb-4" style="width:22%;">
+            <div class="card-header py-3">
+                <h3 class="m-0 font-weight-bold text-primary">Test - 排程檢查器</h3>
+            </div>
+            <div class="card-body">
+                <!-- DataTales Example -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+
+                        <form class="btn btn-primary btn-icon-split btn-lg">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-flag"></i>
+                            </span>
+                            <input  type="button" class="btn btn-primary btn-icon-split btn-lg"
+                                   style="margin-left:10px; margin-right:10px;" data-toggle="modal"
+                                   data-target="#fake_profit_test_schedule_check_open" value="開啟" onclick="fake_profit('fake_profit_test_schedule', 'open')"/>
+                        </form>
+                        <div class="modal fade" id="fake_profit_test_schedule_check_open" tabindex="-1" role="dialog" aria-labelledby="fake_profit_test_schedule_open" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="fake_profit_test_schedule_open">結果</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                  Test 排程檢查器開啟
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+
+                        <br><br>
+                        <form class="btn btn-primary btn-icon-split btn-lg">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-flag"></i>
+                                </span>
+
+                            <input type="button" class="btn btn-primary btn-icon-split btn-lg"
+                                   style="margin-left:10px; margin-right:10px;" data-toggle="modal"
+                                   data-target="#fake_profit_test_schedule_check_close" value="關閉" onclick="fake_profit('fake_profit_test_schedule', 'close')"/>
+                        </form>
+                        <div class="modal fade" id="fake_profit_test_schedule_check_close" tabindex="-1" role="dialog" aria-labelledby="fake_profit_test_schedule_close" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="fake_profit_test_schedule_close">結果</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                  Test - 排程檢查器關閉
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <br><br>
+                        <div class="btn-info btn-icon-split btn-lg">
+                            <span class="icon text-white-50">
+                            </span>
+                            <span id="fake_profit_schedule_test_status" class="text">{{ fake_profit_schedule_test_status }}</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Basic Card Example 3 -->
+        <div class="card shadow mb-4" style="width:22%;">
+            <div class="card-header py-3">
+                <h3 class="m-0 font-weight-bold text-primary">Test2 - 排程檢查器</h3>
+            </div>
+            <div class="card-body">
+                <!-- DataTales Example -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+
+                        <form class="btn btn-primary btn-icon-split btn-lg">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-flag"></i>
+                            </span>
+                            <input  type="button" class="btn btn-primary btn-icon-split btn-lg"
+                                   style="margin-left:10px; margin-right:10px;" data-toggle="modal"
+                                   data-target="#fake_profit_test2_schedule_check_open" value="開啟" onclick="fake_profit('fake_profit_test2_schedule', 'open')"/>
+                        </form>
+                        <div class="modal fade" id="fake_profit_test2_schedule_check_open" tabindex="-1" role="dialog" aria-labelledby="fake_profit_test2_schedule_open" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="fake_profit_test2_schedule_open">結果</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                  Test2 排程檢查器開啟
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+
+                        <br><br>
+                        <form class="btn btn-primary btn-icon-split btn-lg">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-flag"></i>
+                                </span>
+
+                            <input type="button" class="btn btn-primary btn-icon-split btn-lg"
+                                   style="margin-left:10px; margin-right:10px;" data-toggle="modal"
+                                   data-target="#fake_profit_test2_schedule_check_close" value="關閉" onclick="fake_profit('fake_profit_test2_schedule', 'close')"/>
+                        </form>
+                        <div class="modal fade" id="fake_profit_test2_schedule_check_close" tabindex="-1" role="dialog" aria-labelledby="fake_profit_test2_schedule_close" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="fake_profit_test2_schedule_close">結果</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                  Test - 排程檢查器關閉
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <br><br>
+                        <div class="btn-info btn-icon-split btn-lg">
+                            <span class="icon text-white-50">
+                            </span>
+                            <span id="fake_profit_schedule_test2_status" class="text">{{ fake_profit_schedule_test2_status }}</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

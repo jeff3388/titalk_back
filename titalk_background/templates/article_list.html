@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+
+
+                                <!-- 搜尋按鈕 -->
+<!--                                <form class="user" method='post' action="/article">-->
+<!--                                        <div class="form-group">-->
+<!--                                            <input type="text" class="form-control form-control-user"-->
+<!--                                                   name="username"-->
+<!--                                                id="exampleInputEmail" placeholder="Enter Account">-->
+<!--                                        </div>-->
+<!--                                        <div class="form-group">-->
+<!--                                            <input type="text" class="form-control form-control-user"-->
+<!--                                                   name="password"-->
+<!--                                                id="exampleInputPassword" placeholder="Password">-->
+<!--                                        </div>-->
+
+<!--                                        <button type='submit' class="btn btn-primary btn-user btn-block">submit</button>-->
+<!--                                    </form>-->
+
+<!--                                    <br>--><!-- Sidebar Toggler (Sidebar) -->
+
+
+                        <!-- 文章列表 -->
+                            <h1 class="h3 mb-2 text-gray-800">最新抖音文章</h1>
+                            <!-- Collapsable Card Example -->
+                            {{ article_list | safe }}
+
+
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+
+            <!-- End of Main Content -->
+{% endblock %}
+
